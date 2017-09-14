@@ -1,0 +1,28 @@
+database_url: 'sqlite:///db.sqlite'
+snapshots_dir: '/tmp'
+
+flask: 
+    HOST: 127.0.0.1
+    PORT: 5000
+    DEBUG: TRUE
+    SECRET_KEY: 'secret_key'
+
+logging:
+    version: 1
+    formatters:
+        simple:
+            format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    handlers:
+        stdout:
+            class: logging.StreamHandler
+            level: DEBUG
+            formatter: simple
+            stream: ext://sys.stdout
+    loggers:
+        javelina:
+            level: INFO
+            handlers: [stdout]
+            propagate: no
+    root:
+        level: DEBUG
+        handlers: [stdout]

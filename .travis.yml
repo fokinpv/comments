@@ -1,0 +1,23 @@
+sudo: required
+dist: trusty
+
+language: python
+
+python:
+  - "3.6"
+
+cache:
+  apt: true
+  pip: true
+
+install:
+  - pip install -U pip setuptools
+  - pip install -r requirements.txt
+  - pip install -r requirements-dev.txt
+  - pip install codecov
+
+script:
+  - ./run-tests.sh
+
+after_success:
+  - codecov --token=251919ea-1e93-4758-b139-194c275d72e6
